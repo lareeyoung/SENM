@@ -1,0 +1,46 @@
+name: Finalize v0.1.0 release notes
+
+on:
+  push:
+    branches:
+      - "main"
+
+permissions:
+  contents: write
+
+jobs:
+  finalize:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Update release notes with uploaded asset digests
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          cat > release-notes.md <<'EOF'
+          SENM 首个公开社区版本：把短剧灵感、剧情或粗糙剧本转成 Seedance 2.0 可执行视频 Prompt。
+
+          ## 下载
+          - **macOS Apple Silicon**：`SENM-0.1.0-arm64.dmg`
+          - **Windows 10/11 x64**：`SENM-0.1.0-x64.exe`
+          - ZIP 文件为免安装/备用分发包。
+
+          ## 本版能力
+          - macOS 菜单栏与 Windows 系统托盘快速窗口
+          - 可配置 AI Prompt Agent、连接测试与失败重试
+          - 剧情关系、潜台词、分镜节奏和多模态素材转译
+          - 即梦社区公约风险提醒，但不限制用户继续生成
+          - 完整源码、MIT 许可证、贡献指南和自动双平台发版流程
+
+          ## 首次启动
+          当前安装包没有 Apple Developer ID notarization 或 Windows Authenticode 签名，系统可能显示未知开发者提醒。请只从本 Release 下载。
+
+          ## SHA-256
+          - macOS DMG: `fdebfc441db6a24d0692a5972657c6c617c090e90e1957fb107cf04dbc74231a`
+          - macOS ZIP: `4bcc2fe2781449997ce9555c16a1e1b15c9a37da8b2a3a0726a79932a5a3ed3b`
+          - Windows EXE: `725fbb933e0d7def339f23bc7598c65108211c04f23cff8145a9ca52aa5e264a`
+          - Windows ZIP: `e21b43d9cd8840c9f3f8a061792c54f956ffa10e753c501decd7c68a189e592c`
+
+          **完整变更记录**：https://github.com/lareeyoung/SENM/commits/v0.1.0
+          EOF
+          sed -i 's/^          //' release-notes.md
+          gh release edit v0.1.0 --repo "$GITHUB_REPOSITORY" --notes-file release-notes.md
