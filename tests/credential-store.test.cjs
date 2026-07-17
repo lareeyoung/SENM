@@ -14,8 +14,10 @@ test("credential store encrypts, caches, reloads and clears without a system key
     assert.equal(store.has(), true);
     assert.equal(store.read(), "test-example-secret");
     assert.equal(fs.readFileSync(store.paths.encryptedDataPath, "utf8").includes("test-example-secret"), false);
-    assert.equal(fs.statSync(store.paths.masterKeyPath).mode & 0o777, 0o600);
-    assert.equal(fs.statSync(store.paths.encryptedDataPath).mode & 0o777, 0o600);
+    if (process.platform !== "win32") {
+      assert.equal(fs.statSync(store.paths.masterKeyPath).mode & 0o777, 0o600);
+      assert.equal(fs.statSync(store.paths.encryptedDataPath).mode & 0o777, 0o600);
+    }
 
     const reloaded = createCredentialStore(directory);
     assert.equal(reloaded.read(), "test-example-secret");
