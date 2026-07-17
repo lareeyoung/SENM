@@ -12,8 +12,8 @@
     "test:credentials": "node --test tests/credential-store.test.cjs",
     "preview": "vite preview --host 127.0.0.1",
     "electron": "electron .",
-    "dist:mac": "npm run build && electron-builder --mac --arm64 --dir && node scripts/ad-hoc-sign-mac.cjs && electron-builder --mac dmg zip --arm64 --prepackaged release/mac-arm64",
-    "dist:win": "npm run build && electron-builder --win nsis zip --x64"
+    "dist:mac": "npm run build && electron-builder --mac --arm64 --dir --publish never && node scripts/ad-hoc-sign-mac.cjs && electron-builder --mac dmg zip --arm64 --prepackaged release/mac-arm64 --publish never",
+    "dist:win": "npm run build && electron-builder --win nsis zip --x64 --publish never"
   },
   "keywords": [
     "seedance",
