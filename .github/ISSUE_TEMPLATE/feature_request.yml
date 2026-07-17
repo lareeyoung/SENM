@@ -1,0 +1,24 @@
+name: 功能建议
+description: 提议新的创作流程、Prompt 策略或桌面能力
+title: "[Feature] "
+labels: [enhancement]
+body:
+  - type: textarea
+    id: scenario
+    attributes:
+      label: 创作场景
+      description: 你在什么情况下需要这项能力？
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: 建议方案
+      description: 希望 SENM 如何工作？
+    validations:
+      required: true
+  - type: textarea
+    id: examples
+    attributes:
+      label: 示例或参考
+      description: 可附公开、已获授权的样例。
