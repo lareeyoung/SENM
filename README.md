@@ -2,6 +2,22 @@
 
 把短剧灵感、完整剧情或粗糙剧本，转成 Seedance 2.0 可执行视频 Prompt 的桌面工具。SENM 提供常驻系统托盘的快速窗口，也保留完整工作台、多模态素材引用和可配置 AI Prompt Agent。
 
+## 界面预览
+
+### 完整工作台
+
+输入剧情后，SENM 会同步整理人物、场景、镜头节奏、画幅、时长、声音策略与多模态引用。
+
+![SENM 完整工作台](docs/assets/senm-workspace.png)
+
+### 快速 Prompt
+
+通过菜单栏、系统托盘或全局快捷键唤起小窗，记录灵感并直接生成可复制的 Seedance Prompt。
+
+<p align="center">
+  <img src="docs/assets/senm-quick-prompt.png" alt="SENM 快速 Prompt 悬浮窗口" width="430">
+</p>
+
 ## 下载
 
 前往 [Releases](https://github.com/lareeyoung/SENM/releases/latest) 下载最新版本：
